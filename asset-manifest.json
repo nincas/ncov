@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ncov/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/ncov/static/js/main.30c1193c.chunk.js",
-    "main.js.map": "/ncov/static/js/main.30c1193c.chunk.js.map",
+    "main.js": "/ncov/static/js/main.59f9b71c.chunk.js",
+    "main.js.map": "/ncov/static/js/main.59f9b71c.chunk.js.map",
     "runtime-main.js": "/ncov/static/js/runtime-main.dd544486.js",
     "runtime-main.js.map": "/ncov/static/js/runtime-main.dd544486.js.map",
     "static/js/2.b181ae8c.chunk.js": "/ncov/static/js/2.b181ae8c.chunk.js",
@@ -22,7 +22,7 @@
     "static/js/7.33a0a4c3.chunk.js": "/ncov/static/js/7.33a0a4c3.chunk.js",
     "static/js/7.33a0a4c3.chunk.js.map": "/ncov/static/js/7.33a0a4c3.chunk.js.map",
     "index.html": "/ncov/index.html",
-    "precache-manifest.0b7b9a6b46c0d7ba4a5d74b462515a2f.js": "/ncov/precache-manifest.0b7b9a6b46c0d7ba4a5d74b462515a2f.js",
+    "precache-manifest.8a929d95a451db5129a3e93e92a54245.js": "/ncov/precache-manifest.8a929d95a451db5129a3e93e92a54245.js",
     "service-worker.js": "/ncov/service-worker.js",
     "static/css/4.386baf0c.chunk.css.map": "/ncov/static/css/4.386baf0c.chunk.css.map",
     "static/css/5.bd59e8ca.chunk.css.map": "/ncov/static/css/5.bd59e8ca.chunk.css.map",
@@ -36,6 +36,6 @@
     "static/js/runtime-main.dd544486.js",
     "static/js/3.3fea41b3.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.30c1193c.chunk.js"
+    "static/js/main.59f9b71c.chunk.js"
   ]
 }
