@@ -1,2 +1,0 @@
-(this["webpackJsonpcovid-app"]=this["webpackJsonpcovid-app"]||[]).push([[6],{385:function(e,t,n){},390:function(e,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return r}));var a=n(0),i=n.n(a);n(385);function r(){return i.a.createElement("div",{className:"aboutContainer"},i.a.createElement("h1",null,"ABOUT"),i.a.createElement("p",null,"Just an simple and rush site for ncov."),i.a.createElement("a",{target:"_blank",href:"http://nincas.github.io"},"Github Profile"))}}}]);
-//# sourceMappingURL=6.c7400869.chunk.js.map
