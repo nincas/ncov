@@ -4,6 +4,7 @@ import {
 } from 'recharts';
 import './Index.css';
 import Loader from './Loader';
+
 const Header = lazy(() => import('./Header'))
 const PieComponent = lazy(() => import('./Pie'))
 
@@ -17,9 +18,13 @@ const lazyLoader = (Component, name = '', props = {}) => {
 }
 
 function Index () {
-    const countries = ['philippines', 'us', 'china', 'italy']
+    const countries = ['philippines', 'us', 'china', 'italy', 'spain', 'france', 'korea', 'uk', 'germany']
     return (
         <div className="container">
+            <header>
+                <h1>CORONAVIRUS CHARTS</h1>
+            </header>
+            <hr/>
             {lazyLoader(Header, 'header')}
             {
                 countries.map(country => {
@@ -28,7 +33,9 @@ function Index () {
                     </ResponsiveContainer>
                 })
             }
-            
+            <a href="/ncov/about">ABOUT</a>
+            <br/>
+            <br/>
         </div>
     );
 }

@@ -48,7 +48,7 @@ export default function Header ()
     const formatNumber = (value) =>  Number((value).toFixed(1)).toLocaleString();
     return (
         <div className="headerContainer">
-            {!loading ? <PieComponent country="global" data={stats}/> : <Loader/>}
+            {!loading ? <PieComponent country="global" data={stats} activeIdx={2}/> : <Loader/>}
         </div>
     )
 }

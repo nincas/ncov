@@ -31,3 +31,8 @@
     color: brown;
     font-family: 'Courier New', Courier, monospace;
 }
+
+.textInsidePie {
+    -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}

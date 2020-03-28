@@ -25,12 +25,12 @@ const PreLoaderDiv = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 8px dotted white;
+    border: 8px dotted #333;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
     animation: PreLoading 1s ease-in-out infinite;
     top: 45%;
-    transform: translateY(50%);
+    transform: translateY(60%);
     @keyframes PreLoading {
         from {
             transform: rotate(0deg);
@@ -63,7 +63,7 @@ export default function Loader(props) {
     return (
         <React.Fragment>
             <LoaderContainer>
-                <LoaderDiv/>
+                {/* <LoaderDiv/> */}
                 <PreLoaderDiv/>
                 {/* <LoadingText>Loading <Name>{name.toUpperCase()}</Name> </LoadingText> */}
             </LoaderContainer>

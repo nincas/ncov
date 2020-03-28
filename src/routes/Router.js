@@ -24,12 +24,15 @@ const lazyLoader = (Component, name = '') => {
 
 function Router() {
     return (
-        <BrowserRouter>
-            <Switch>
-                <Route exact path="/" component={lazyLoader(Index, '')}/>
-                <Route exact path="/about" component={lazyLoader(About, '')}/>
-            </Switch>
-        </BrowserRouter>
+        <React.Fragment>
+           
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/ncov/" component={lazyLoader(Index, '')}/>
+                    <Route exact path="/ncov/about" component={lazyLoader(About, '')}/>
+                </Switch>
+            </BrowserRouter>
+        </React.Fragment>
     )
 }
 

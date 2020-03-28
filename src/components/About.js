@@ -11,6 +11,7 @@ export default function About ()
                 Just an simple and rush site for ncov.
             </p>
             <a target="_blank" href="http://nincas.github.io">Github Profile</a>
+            <a target="_blank" href="https://github.com/novelcovid/api">Powered By: Novelcovid/api</a>
         </div>
     )
 }

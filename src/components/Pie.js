@@ -16,8 +16,16 @@ import './Pie.css'
 
 const ucword = (str) => str.charAt(0).toUpperCase() + str.substr(1, str.length)
 
-export default function PieComponent ({country = 'philippines', data = []}) {
+export default function PieComponent ({country = 'philippines', data = [], activeIdx = null}) {
     const [arrData, setData] = useState([])
+    const [colors, setColors] = useState([
+        '#8DD1E1', // TodayCases
+        '#b33434', // Deaths
+        '#e35146', // TodayDeaths
+        '#8884D8', // Recovered
+        '#A4DE6C', // Active
+        '#d97b34', // Critical
+    ])
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -25,6 +33,12 @@ export default function PieComponent ({country = 'philippines', data = []}) {
 
         if (data.length > 0) {
             setData(data)
+            setColors([
+                '#b33434', // Deaths
+                '#8884D8', // Recovered
+                '#A4DE6C', // Active
+            ])
+
             setLoading(false)
             return;
         }
@@ -48,7 +62,6 @@ export default function PieComponent ({country = 'philippines', data = []}) {
                     })
                 });
 
-                console.log(pieData)
 
                 setData(pieData)
                 setLoading(false)
@@ -56,14 +69,6 @@ export default function PieComponent ({country = 'philippines', data = []}) {
         }, 3000)
     }, [arrData])
 
-    const colors = [
-        '#8DD1E1',
-        '#83A6ED',
-        '#D0ED57',
-        '#8884D8',
-        '#A4DE6C',
-        '#82CA9D',
-    ];
 
     const formatNumber = (value) => {
         return Number((value).toFixed(1)).toLocaleString()
@@ -71,7 +76,6 @@ export default function PieComponent ({country = 'philippines', data = []}) {
 
     const CustomLabel = ({viewBox, value1, value2}) => {
         const {cx, cy} = viewBox;
-        console.log(cx,cy)
         return (
             <text x={cx} y={cy + 20} className="containerLabel" fill="#333" className="recharts-text recharts-label" textAnchor="middle" dominantBaseline="central">
                 <tspan alignmentBaseline="bottom" fontSize="12">{value2.toUpperCase().substr(0, 3)} ({value1})</tspan>
@@ -95,10 +99,11 @@ export default function PieComponent ({country = 'philippines', data = []}) {
         const ex = mx + (cos >= 0 ? 1 : -1) * 22;
         const ey = my;
         const textAnchor = cos >= 0 ? 'start' : 'end';
-        console.log(`M${sx},${sy}L${mx},${my}L${ex},${ey}`)
         return (
           <g>
-            <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>{formatNumber(payload.value)}</text>
+            <text x={cx} y={cy} dy={8} className="textInsidePie" textAnchor="middle" fill={fill} style={{
+                fontWeight: 'bold'
+            }}>{formatNumber(payload.value)}</text>
             <Sector
               cx={cx}
               cy={cy}
@@ -127,7 +132,8 @@ export default function PieComponent ({country = 'philippines', data = []}) {
         );
     };
 
-    const [activeIndex, setIndex] = useState(4);
+    const [activeIndex, setIndex] = useState(activeIdx ? activeIdx : 4);
+
     const onPieEnter = (data, index) => {
         setIndex(index)
     }
