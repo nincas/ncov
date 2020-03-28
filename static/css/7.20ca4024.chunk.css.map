@@ -1,0 +1,1 @@
+{"version":3,"sources":["Index.css"],"names":[],"mappings":"AAAA,WACI,YAAa,CACb,qBAAsB,CACtB,kBAAmB,CACnB,iBAEJ","file":"7.20ca4024.chunk.css","sourcesContent":[".container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    overflow-y: hidden;\r\n\r\n}\r\n\r\n\r\n"]}
