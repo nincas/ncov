@@ -1,0 +1,33 @@
+.containerLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.pieHeader {
+    margin: auto;
+    text-transform: uppercase;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+  
+.chartTitle {
+   position: absolute;
+   padding: 10px;
+   padding-left: 12%;
+   padding-top: 50px;
+}
+
+.loading {
+    margin-top: 10%;
+    color: brown;
+    font-family: 'Courier New', Courier, monospace;
+}
