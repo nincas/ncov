@@ -18,7 +18,7 @@ const lazyLoader = (Component, name = '', props = {}) => {
 }
 
 function Index () {
-    const countries = ['philippines', 'us', 'china', 'italy', 'spain', 'france', 'korea', 'uk', 'germany']
+    const countries = ['philippines', 'us', 'china', 'italy', 'spain', 'france', 'S.%20Korea', 'uk', 'germany']
     return (
         <div className="container">
             <header>
