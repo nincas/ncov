@@ -19,6 +19,7 @@ const ucword = (str) => str.charAt(0).toUpperCase() + str.substr(1, str.length)
 export default function PieComponent ({country = 'philippines', data = [], activeIdx = null}) {
     const [arrData, setData] = useState([])
     const [countryInfo, setCountry] = useState({});
+    const [countryName, setCountryName] = useState('');
     const [colors, setColors] = useState([
         '#8DD1E1', // TodayCases
         '#b33434', // Deaths
@@ -49,8 +50,9 @@ export default function PieComponent ({country = 'philippines', data = [], activ
             .then(data => data.json())
             .then(data => {
                 let cases = data.cases;
-                delete data.country
                 setCountry(data.countryInfo)
+                setCountryName(data.country)
+                delete data.country
                 delete data.countryInfo
                 delete data.cases
                 delete data.casesPerOneMillion
@@ -150,7 +152,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                     {!countryInfo.flag  ? <img src={countryInfo.flag} style={{
                         height: '12px'
                     }}></img> : ''}
-                    <h2>{country.toUpperCase()} ({formatNumber(arrData[0].totalCases)})</h2>
+                    <h2>{countryName.toUpperCase()} ({formatNumber(arrData[0].totalCases)})</h2>
                 </div>
             }
             <PieChart width={500} height={300}>
