@@ -18,6 +18,7 @@ const ucword = (str) => str.charAt(0).toUpperCase() + str.substr(1, str.length)
 
 export default function PieComponent ({country = 'philippines', data = [], activeIdx = null}) {
     const [arrData, setData] = useState([])
+    const [countryInfo, setCountry] = useState({});
     const [colors, setColors] = useState([
         '#8DD1E1', // TodayCases
         '#b33434', // Deaths
@@ -49,10 +50,12 @@ export default function PieComponent ({country = 'philippines', data = [], activ
             .then(data => {
                 let cases = data.cases;
                 delete data.country
+                setCountry(data.countryInfo)
                 delete data.countryInfo
                 delete data.cases
                 delete data.casesPerOneMillion
                 delete data.deathsPerOneMillion
+                delete data.updated
 
                 _.forEach(data, (data, name) => {
                     pieData.push({
@@ -77,9 +80,8 @@ export default function PieComponent ({country = 'philippines', data = [], activ
     const CustomLabel = ({viewBox, value1, value2}) => {
         const {cx, cy} = viewBox;
         return (
-            <text x={cx} y={cy + 20} className="containerLabel" fill="#333" className="recharts-text recharts-label" textAnchor="middle" dominantBaseline="central">
-                <tspan alignmentBaseline="bottom" fontSize="12">{value2.toUpperCase().substr(0, 3)} ({value1})</tspan>
-
+            <text x={cx} y={cy + 20} className="containerLabel" fill="red" fontWeight="bold" className="recharts-text recharts-label" textAnchor="middle" dominantBaseline="central">
+                {/* <tspan alignmentBaseline="bottom" fontSize="12">({value2})</tspan> */}
             </text>
         )
     }
@@ -101,9 +103,12 @@ export default function PieComponent ({country = 'philippines', data = [], activ
         const textAnchor = cos >= 0 ? 'start' : 'end';
         return (
           <g>
-            <text x={cx} y={cy} dy={8} className="textInsidePie" textAnchor="middle" fill={fill} style={{
+            {/* <text x={cx} y={cy} dy={8} className="textInsidePie" textAnchor="middle" fill={fill} style={{
                 fontWeight: 'bold'
-            }}>{formatNumber(payload.value)}</text>
+            }}> */}
+            <text x={cx} y={cy} className="recharts-text recharts-label centerTextLabel" textAnchor="middle" fill={fill} dominantBaseline="central">
+                <tspan alignmentBaseline="middle" fontSize="12">{payload.name}</tspan>
+            </text>
             <Sector
               cx={cx}
               cy={cy}
@@ -124,7 +129,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
             />
             <path d={`M${sx},${sy}L${mx},${my}L${ex - 10},${ey}`} stroke={fill} fill="none" />
             <circle cx={ex - 10} cy={ey} r={2} fill={fill} stroke="none" />
-            <text x={ex + (cos >= 0 ? 1 : -1) } y={ey} textAnchor={textAnchor} fill="#333" fontSize="12">{`${payload.name}`}</text>
+            <text x={ex + (cos >= 0 ? 1 : -1) } y={ey} textAnchor={textAnchor} fill="#fff" fontSize="12">{`${payload.name}`}</text>
             <text x={ex + (cos >= 0 ? 1 : -1) } y={ey} dy={18} textAnchor={textAnchor} fontSize="12" fill="#999">
               {`(${(percent * 100).toFixed(2)}%)`}
             </text>
@@ -133,7 +138,6 @@ export default function PieComponent ({country = 'philippines', data = [], activ
     };
 
     const [activeIndex, setIndex] = useState(activeIdx ? activeIdx : 4);
-
     const onPieEnter = (data, index) => {
         setIndex(index)
     }
@@ -141,21 +145,28 @@ export default function PieComponent ({country = 'philippines', data = [], activ
         
     return (
         <div className="container">
-            
-            <h2>{country.toUpperCase()}</h2>
-            {loading ? <Loader/> : ''}
-            <PieChart width={730} height={300}>
-                {/* <Tooltip formatter={(value, name, props) => ([formatNumber(value), ucword(name)])}/> */}
-                {/* <Legend 
-                    layout="vetical" 
-                    verticalAlign="bottom" 
-                    align="center" 
+            {loading ? <Loader/> : 
+                <div className="countryContainer">
+                    {!countryInfo.flag  ? <img src={countryInfo.flag} style={{
+                        height: '12px'
+                    }}></img> : ''}
+                    <h2>{country.toUpperCase()} ({formatNumber(arrData[0].totalCases)})</h2>
+                </div>
+            }
+            <PieChart width={500} height={300}>
+                <Tooltip separator="" formatter={(value, name, props) => ([formatNumber(value), ''])}/>
+                <Legend 
+                    layout="vertical" 
+                    verticalAlign="top" 
+                    align="center"
                     iconType="circle"
+                    iconSize="12"
                     formatter={(value, entry) => <span style={{
                         fontSize: '12px',
-                        textTransform: 'uppercase'
-                    }}>{value}: <i style={{color: 'red'}}>{formatNumber(entry.payload.value)}</i></span>}
-                /> */}
+                        textTransform: 'uppercase',
+                        color: '#fff'
+                    }}>{value}: <i style={{color: 'red !important'}}>{formatNumber(entry.payload.value)}</i></span>}
+                />
                 {!loading ? 
                 <Pie 
                     data={arrData} 
@@ -165,10 +176,12 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                     nameKey="name" 
                     cx="50%" 
                     cy="50%" 
-                    outerRadius={100} 
-                    innerRadius={60} 
+                    outerRadius={85} 
+                    innerRadius={55} 
                     fill="#8884d8"
                     onMouseEnter={onPieEnter}
+                    animationDuration={2000}
+                    animationEasing="ease-in-out"
                 >
                     <Label width={30} position="center" content={<CustomLabel value1={formatNumber(arrData[0].totalCases)} value2={country}/>}></Label>
                     {
@@ -180,6 +193,8 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                 :
                 ''
                 }
+
+                
             </PieChart> 
         </div>
     )

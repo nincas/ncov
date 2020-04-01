@@ -25,7 +25,7 @@ const PreLoaderDiv = styled.div`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 8px dotted #333;
+    border: 8px dotted #fff;
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent;
     animation: PreLoading 1s ease-in-out infinite;

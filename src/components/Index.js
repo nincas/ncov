@@ -22,9 +22,9 @@ function Index () {
     return (
         <div className="container">
             <header>
-                <h1>CORONAVIRUS CHARTS</h1>
+                <h1>CORONAVIRUS UPDATE</h1>
+                <h4 style={{color: '#fff'}}><i>({(new Date).toDateString()})</i></h4>
             </header>
-            <hr/>
             {lazyLoader(Header, 'header')}
             {
                 countries.map(country => {
