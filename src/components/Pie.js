@@ -35,12 +35,6 @@ export default function PieComponent ({country = 'philippines', data = [], activ
 
         if (data.length > 0) {
             setData(data)
-            setColors([
-                '#b33434', // Deaths
-                '#8884D8', // Recovered
-                '#A4DE6C', // Active
-            ])
-
             setLoading(false)
             return;
         }
@@ -152,10 +146,10 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                     {!countryInfo.flag  ? <img src={countryInfo.flag} style={{
                         height: '12px'
                     }}></img> : ''}
-                    <h2>{countryName.toUpperCase()} ({formatNumber(arrData[0].totalCases)})</h2>
+                    <h2>{country ? country.toUpperCase() : countryName.toUpperCase()} ({formatNumber(arrData[0].totalCases)})</h2>
                 </div>
             }
-            <PieChart width={500} height={300}>
+            <PieChart width={500} height={350}>
                 <Tooltip separator="" formatter={(value, name, props) => ([formatNumber(value), ''])}/>
                 <Legend 
                     layout="vertical" 
