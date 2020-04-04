@@ -27,10 +27,9 @@ export default function Header ()
                 delete data.updated;
                 delete data.casesPerOneMillion
                 delete data.deathsPerOneMillion
+                let affectedCountries = data.affectedCountries
                 delete data.affectedCountries
                 delete data.casesPerOneMillion
-
-
 
                 let totalCases = data.cases
                 delete data.cases;
@@ -55,6 +54,7 @@ export default function Header ()
     const formatNumber = (value) =>  Number((value).toFixed(1)).toLocaleString();
     return (
         <div className="headerContainer">
+            <h2>TOTAL COUNTRIES AFFECTED: {formatNumber(affectedCountries)}</h2>
             {!loading ? <PieComponent country="global" data={stats} activeIdx={4}/> : <Loader/>}
         </div>
     )
