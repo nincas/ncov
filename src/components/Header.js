@@ -57,7 +57,7 @@ export default function Header ()
     const formatNumber = (value) =>  Number((value).toFixed(1)).toLocaleString();
     return (
         <div className="headerContainer">
-            <h2>TOTAL COUNTRIES AFFECTED: 
+            <h2>AFFECTED COUNTRIES: 
                 <i style={{
                     color: 'red'
                 }}>{affectedCountries}</i>

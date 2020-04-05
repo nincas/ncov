@@ -153,23 +153,40 @@ export default function PieComponent ({country = 'philippines', data = [], activ
         align-items: center;
         margin-top: 20px;
         color: #e85f5f;
-        font-size: 18px;
+        font-size: 15px;
+        padding-bottom: 3px;
 
         i {
             color: #fff !important;
         }
     `
 
+    const CountryName = styled.span`
+        font-size: 18px !important;
+        color: yellow !important;
+        text-decoration: underline;
+    `
+
+    const CountryContainer = styled.div`
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center;
+        align-items: center !important;
+    `
+
     return (
         <div className="container">
             {loading ? <Loader name={country}/> : 
                 <div className="countryContainer">
-                    {countryInfo.flag  ? <img src={countryInfo.flag} style={{
-                        height: '28px'
-                    }} title={country ? country.toUpperCase() : countryName.toUpperCase()}/> : ''}
-                    <HeaderCont>
+                    <CountryContainer>
+                        {countryInfo.flag  ? <img src={countryInfo.flag} style={{
+                            height: '18px'
+                        }} title={country ? country.toUpperCase() : countryName.toUpperCase()}/> : ''}
+                        <CountryName> {countryName ? countryName.toUpperCase() : country.toUpperCase()}</CountryName>
+                    </CountryContainer>
+                    <HeaderCont image={countryInfo.flag ? countryInfo.flag : ''}>
                         <span>CASES: <i>{formatNumber(arrData[0].totalCases)}</i></span>
-                        {country !== 'global' ? <span>TEST CONDUCTED: <i>{formatNumber(tested)}</i></span> : ''}
+                        {country !== 'global' ? <span>TESTS: <i>{formatNumber(tested)}</i></span> : ''}
                     </HeaderCont>
                 </div>
             }

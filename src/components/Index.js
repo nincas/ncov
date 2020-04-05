@@ -23,8 +23,12 @@ const Sup = styled.sup`
     color: #fff;
 `
 
+const ItemContainer = styled.div`
+    background-image: url(${props => props.url});
+`
+
 function Index () {
-    const countries = ['philippines', 'us', 'china', 'italy', 'spain', 'france', 'S.%20Korea', 'uk', 'germany']
+    const countries = ['philippines', 'us', 'china', 'italy', 'spain', 'france', 'S. Korea', 'uk', 'germany']
     return (
         <div className="container">
             <header>
@@ -33,9 +37,11 @@ function Index () {
             {lazyLoader(Header, 'header')}
             {
                 countries.map(country => {
-                    return <ResponsiveContainer>
-                        {lazyLoader(PieComponent, country, {country})}
-                    </ResponsiveContainer>
+                    return <ItemContainer>
+                            <ResponsiveContainer debounce={1}>
+                            {lazyLoader(PieComponent, country, {country})}
+                        </ResponsiveContainer>
+                    </ItemContainer>
                 })
             }
             <a href="/ncov/about">ABOUT</a>
