@@ -87,6 +87,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
         )
     }
 
+
     const renderActiveShape = (props) => {
         const RADIAN = Math.PI / 180;
         const {
@@ -108,7 +109,9 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                 fontWeight: 'bold'
             }}> */}
             <text x={cx} y={cy} className="recharts-text recharts-label centerTextLabel" textAnchor="middle" fill={fill} dominantBaseline="central">
-                <tspan alignmentBaseline="middle" fontSize="12">{payload.name}</tspan>
+                <tspan alignmentBaseline="middle" fontSize="14" style={{
+                    fontWeight: 'bold'
+                }}>{payload.name}</tspan>
             </text>
             <Sector
               cx={cx}
@@ -130,7 +133,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
             />
             <path d={`M${sx},${sy}L${mx},${my}L${ex - 10},${ey}`} stroke={fill} fill="none" />
             <circle cx={ex - 10} cy={ey} r={2} fill={fill} stroke="none" />
-            <text x={ex + (cos >= 0 ? 1 : -1) } y={ey} textAnchor={textAnchor} fill="#fff" fontSize="12">{`${payload.name}`}</text>
+            <text x={ex + (cos >= 0 ? 1 : -1) } y={ey} textAnchor={textAnchor} fill="#fff" >{payload.name.toUpperCase()}</text>
             <text x={ex + (cos >= 0 ? 1 : -1) } y={ey} dy={18} textAnchor={textAnchor} fontSize="12" fill="#999">
               {`(${(percent * 100).toFixed(2)}%)`}
             </text>
