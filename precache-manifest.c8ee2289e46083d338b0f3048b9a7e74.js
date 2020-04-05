@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "613342826c580ed0d2cbb8e1bf9a8dfb",
+    "revision": "770f14a1db0db1f41496555e5962f708",
     "url": "/ncov/index.html"
   },
   {
-    "revision": "c876cc8617f7727c351c",
+    "revision": "93d0bf62ee336b0c5e65",
     "url": "/ncov/static/css/4.bd8305e3.chunk.css"
   },
   {
-    "revision": "31fc4dba891732d8b151",
+    "revision": "e4df002f8e1218e3c24c",
     "url": "/ncov/static/css/5.cf1fcac4.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ncov/static/css/6.67ef068e.chunk.css"
   },
   {
-    "revision": "80f2243d5d04233b8ed2",
-    "url": "/ncov/static/css/7.a939ed5f.chunk.css"
+    "revision": "629a8265cd0c4018b47e",
+    "url": "/ncov/static/css/7.324d6185.chunk.css"
   },
   {
     "revision": "2c427c691415d690b2a2",
@@ -40,20 +40,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ncov/static/js/3.3fea41b3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c876cc8617f7727c351c",
-    "url": "/ncov/static/js/4.4565bda8.chunk.js"
+    "revision": "93d0bf62ee336b0c5e65",
+    "url": "/ncov/static/js/4.72db8beb.chunk.js"
   },
   {
-    "revision": "31fc4dba891732d8b151",
-    "url": "/ncov/static/js/5.ff7e159a.chunk.js"
+    "revision": "e4df002f8e1218e3c24c",
+    "url": "/ncov/static/js/5.a289e3c3.chunk.js"
   },
   {
     "revision": "8bb2c23e025b83a81075",
     "url": "/ncov/static/js/6.3dd62732.chunk.js"
   },
   {
-    "revision": "80f2243d5d04233b8ed2",
-    "url": "/ncov/static/js/7.fbc2efcd.chunk.js"
+    "revision": "629a8265cd0c4018b47e",
+    "url": "/ncov/static/js/7.64797abc.chunk.js"
   },
   {
     "revision": "e41779554e9452fceed5",
@@ -64,7 +64,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ncov/static/js/main.14c57759.chunk.js"
   },
   {
-    "revision": "649c7bf5921ae6604f83",
-    "url": "/ncov/static/js/runtime-main.f0acf831.js"
+    "revision": "5276247ff86c07dd7cd6",
+    "url": "/ncov/static/js/runtime-main.61387782.js"
   }
 ]);
