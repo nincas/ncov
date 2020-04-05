@@ -22,6 +22,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
     const [countryInfo, setCountry] = useState({});
     const [countryName, setCountryName] = useState('');
     const [tested, setTested] = useState(0);
+    const [latLong, setLatLong] = useState('')
     const [colors, setColors] = useState([
         '#8DD1E1', // TodayCases
         '#b33434', // Deaths
@@ -48,6 +49,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                 let cases = data.cases;
                 setCountry(data.countryInfo)
                 setCountryName(data.country)
+                setLatLong(`${data.countryInfo.lat},${data.countryInfo.long}`)
                 delete data.country
                 delete data.countryInfo
                 delete data.cases
@@ -164,7 +166,6 @@ export default function PieComponent ({country = 'philippines', data = [], activ
     const CountryName = styled.span`
         font-size: 18px !important;
         color: yellow !important;
-        text-decoration: underline;
     `
 
     const CountryContainer = styled.div`
@@ -173,7 +174,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
         justify-content: center;
         align-items: center !important;
     `
-
+    // °
     return (
         <div className="container">
             {loading ? <Loader name={country}/> : 
@@ -182,7 +183,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                         {countryInfo.flag  ? <img src={countryInfo.flag} style={{
                             height: '18px'
                         }} title={country ? country.toUpperCase() : countryName.toUpperCase()}/> : ''}
-                        <CountryName> {countryName ? countryName.toUpperCase() : country.toUpperCase()}</CountryName>
+                        <CountryName> {countryName ? countryName.toUpperCase() : country.toUpperCase()} {country !== 'global' ? <a target="_blank" href={`https://maps.google.com/?q=${latLong}`}>({latLong ? `°${latLong.split(',')[0]} °${latLong.split(',')[1]}` : latLong})</a> : ''}</CountryName>
                     </CountryContainer>
                     <HeaderCont image={countryInfo.flag ? countryInfo.flag : ''}>
                         <span>CASES: <i>{formatNumber(arrData[0].totalCases)}</i></span>
