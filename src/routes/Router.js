@@ -11,6 +11,8 @@ import Loader from '../components/Loader'
 
 const Index = lazy(() => import('../components/Index'))
 const About = lazy(() => import('../components/About'))
+const Error = lazy(() => import('../components/404'))
+
 
 const lazyLoader = (Component, name = '') => {
     return props => (
@@ -30,6 +32,7 @@ function Router() {
                 <Switch>
                     <Route exact path="/ncov/" component={lazyLoader(Index, '')}/>
                     <Route exact path="/ncov/about" component={lazyLoader(About, '')}/>
+                    <Route component={lazyLoader(Error, '')}/>
                 </Switch>
             </BrowserRouter>
         </React.Fragment>

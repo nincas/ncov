@@ -12,6 +12,7 @@ import {
 } from 'recharts'
 import _ from 'lodash'
 import Loader from './Loader'
+import styled from 'styled-components'
 import './Pie.css'
 
 const ucword = (str) => str.charAt(0).toUpperCase() + str.substr(1, str.length)
@@ -20,6 +21,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
     const [arrData, setData] = useState([])
     const [countryInfo, setCountry] = useState({});
     const [countryName, setCountryName] = useState('');
+    const [tested, setTested] = useState(0);
     const [colors, setColors] = useState([
         '#8DD1E1', // TodayCases
         '#b33434', // Deaths
@@ -52,6 +54,9 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                 delete data.casesPerOneMillion
                 delete data.deathsPerOneMillion
                 delete data.updated
+                delete data.testsPerOneMillion
+                setTested(data.tests)
+                delete data.tests
 
                 _.forEach(data, (data, name) => {
                     pieData.push({
@@ -138,15 +143,31 @@ export default function PieComponent ({country = 'philippines', data = [], activ
         setIndex(index)
     }
 
-        
+    const HeaderCont = styled.div`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        color: #e85f5f;
+        font-size: 18px;
+
+        i {
+            color: #fff !important;
+        }
+    `
+
     return (
         <div className="container">
-            {loading ? <Loader/> : 
+            {loading ? <Loader name={country}/> : 
                 <div className="countryContainer">
-                    {!countryInfo.flag  ? <img src={countryInfo.flag} style={{
-                        height: '12px'
-                    }}></img> : ''}
-                    <h2>{country ? country.toUpperCase() : countryName.toUpperCase()} ({formatNumber(arrData[0].totalCases)})</h2>
+                    {countryInfo.flag  ? <img src={countryInfo.flag} style={{
+                        height: '28px'
+                    }} title={country ? country.toUpperCase() : countryName.toUpperCase()}/> : ''}
+                    <HeaderCont>
+                        <span>CASES: <i>{formatNumber(arrData[0].totalCases)}</i></span>
+                        {country !== 'global' ? <span>TEST CONDUCTED: <i>{formatNumber(tested)}</i></span> : ''}
+                    </HeaderCont>
                 </div>
             }
             <PieChart width={500} height={350}>

@@ -49,10 +49,10 @@
 
 .countryContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding-bottom: 5px;
 }
 
 .countryContainer img {

@@ -9,7 +9,8 @@ const ucword = (str) => str.charAt(0).toUpperCase() + str.substr(1, str.length)
 export default function Header () 
 {
     const [stats, setStats] = useState([]);
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+    const [affectedCountries, setAffectedCountries] = useState(0)
 
     useEffect(() => {
         setTimeout(() => {
@@ -27,9 +28,11 @@ export default function Header ()
                 delete data.updated;
                 delete data.casesPerOneMillion
                 delete data.deathsPerOneMillion
-                let affectedCountries = data.affectedCountries
+                setAffectedCountries(data.affectedCountries)
                 delete data.affectedCountries
                 delete data.casesPerOneMillion
+                delete data.testsPerOneMillion
+                delete data.tests
 
                 let totalCases = data.cases
                 delete data.cases;
@@ -54,7 +57,11 @@ export default function Header ()
     const formatNumber = (value) =>  Number((value).toFixed(1)).toLocaleString();
     return (
         <div className="headerContainer">
-            <h2>TOTAL COUNTRIES AFFECTED: {formatNumber(affectedCountries)}</h2>
+            <h2>TOTAL COUNTRIES AFFECTED: 
+                <i style={{
+                    color: 'red'
+                }}>{affectedCountries}</i>
+            </h2>
             {!loading ? <PieComponent country="global" data={stats} activeIdx={4}/> : <Loader/>}
         </div>
     )
