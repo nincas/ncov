@@ -183,7 +183,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                         {countryInfo.flag  ? <img src={countryInfo.flag} style={{
                             height: '18px'
                         }} title={country ? country.toUpperCase() : countryName.toUpperCase()}/> : ''}
-                        <CountryName> {countryName ? countryName.toUpperCase() : country.toUpperCase()} {country !== 'global' ? <a target="_blank" href={`https://maps.google.com/?q=${latLong}`}>({latLong ? `°${latLong.split(',')[0]} °${latLong.split(',')[1]}` : latLong})</a> : ''}</CountryName>
+                        <CountryName> {countryName ? countryName.toUpperCase() : country.toUpperCase()}</CountryName>
                     </CountryContainer>
                     <HeaderCont image={countryInfo.flag ? countryInfo.flag : ''}>
                         <span>CASES: <i>{formatNumber(arrData[0].totalCases)}</i></span>

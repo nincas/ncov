@@ -28,7 +28,7 @@ const ItemContainer = styled.div`
 `
 
 function Index () {
-    const countries = ['philippines', 'us', 'china', 'italy', 'spain', 'france', 'S. Korea', 'uk', 'germany']
+    const countries = ['philippines', 'malaysia', 'us', 'china', 'italy', 'spain', 'france', 'S. Korea', 'uk', 'germany']
     return (
         <div className="container">
             <header>
