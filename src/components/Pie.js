@@ -43,7 +43,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
         }
         
         setTimeout(() => {
-            fetch('https://corona.lmao.ninja/countries/' + country)
+            fetch('https://corona.lmao.ninja/v2/countries/' + country)
             .then(data => data.json())
             .then(data => {
                 let cases = data.cases;
@@ -59,6 +59,9 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                 delete data.testsPerOneMillion
                 setTested(data.tests)
                 delete data.tests
+                delete data.continent;
+                delete data.population;
+                delete data.undefined;
 
                 _.forEach(data, (data, name) => {
                     pieData.push({
@@ -77,6 +80,7 @@ export default function PieComponent ({country = 'philippines', data = [], activ
 
 
     const formatNumber = (value) => {
+        if (typeof value == 'string') return;
         return Number((value).toFixed(1)).toLocaleString()
     }
 

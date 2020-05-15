@@ -15,7 +15,7 @@ export default function Header ()
     useEffect(() => {
         setTimeout(() => {
             let radialData = []
-            fetch('https://corona.lmao.ninja/all')
+            fetch('https://corona.lmao.ninja/v2/all')
             .then(data => data.json())
             .then(data => {
                 const colors = {
@@ -32,7 +32,10 @@ export default function Header ()
                 delete data.affectedCountries
                 delete data.casesPerOneMillion
                 delete data.testsPerOneMillion
-                delete data.tests
+                delete data.tests;
+                delete data.continent;
+                delete data.population
+                delete data.undefined;
 
                 let totalCases = data.cases
                 delete data.cases;
