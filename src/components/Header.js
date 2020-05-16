@@ -36,6 +36,9 @@ export default function Header ()
                 delete data.continent;
                 delete data.population
                 delete data.undefined;
+                delete data.recoveredPerOneMillion;
+                delete data.activePerOneMillion;
+                delete data.criticalPerOneMillion;
 
                 let totalCases = data.cases
                 delete data.cases;

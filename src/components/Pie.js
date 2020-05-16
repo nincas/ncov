@@ -62,6 +62,9 @@ export default function PieComponent ({country = 'philippines', data = [], activ
                 delete data.continent;
                 delete data.population;
                 delete data.undefined;
+                delete data.recoveredPerOneMillion;
+                delete data.activePerOneMillion;
+                delete data.criticalPerOneMillion;
 
                 _.forEach(data, (data, name) => {
                     pieData.push({
