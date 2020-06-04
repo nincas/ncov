@@ -157,7 +157,7 @@ export default function PieComponent ({country = 'philippines', theme, data = []
         justify-content: center;
         align-items: center;
         margin-top: 20px;
-        color: #e85f5f;
+        color: ${theme == 'dark' ? '#fff' : '#e85f5f'};
         font-size: 15px;
         padding-bottom: 3px;
 
