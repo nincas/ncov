@@ -159,12 +159,12 @@ export default function PieComponent ({country = 'philippines', theme, data = []
         justify-content: center;
         align-items: center;
         margin-top: 20px;
-        color: ${theme == 'dark' ? '#fff' : '#e85f5f'};
+        color: #e85f5f;
         font-size: 15px;
         padding-bottom: 3px;
 
         i {
-            color: #fff !important;
+            color: ${theme == 'dark' ? '#fff' : '#333'} !important;
         }
     `
 
