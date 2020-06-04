@@ -9,9 +9,9 @@ import {
 import _ from 'lodash'
 import Loader from '../components/Loader'
 
-const Index = lazy(() => import('../components/Index'))
-const About = lazy(() => import('../components/About'))
-const Error = lazy(() => import('../components/404'))
+const Index = lazy(() => import(/* webpackChunkName: "AppCovid" */'../components/Index'))
+const About = lazy(() => import(/* webpackChunkName: "AppAbout" */'../components/About'))
+const Error = lazy(() => import(/* webpackChunkName: "App404" */'../components/404'))
 
 
 const lazyLoader = (Component, name = '') => {

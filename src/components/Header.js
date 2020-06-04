@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Header.css';
 import PieComponent from './Pie'
+import styled from 'styled-components'
 import Loader from './Loader'
 import _ from 'lodash'
 
 const ucword = (str) => str.charAt(0).toUpperCase() + str.substr(1, str.length)
 
-export default function Header () 
+export default function Header ({ theme }) 
 {
     const [stats, setStats] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -19,29 +20,23 @@ export default function Header ()
             .then(data => data.json())
             .then(data => {
                 const colors = {
-                    'cases': '#8DD1E1',
-                    'deaths': '#83A6ED',
-                    'recovered': '#D0ED57',
-                    'active': '#8884D8'
+                    'todayCases': '#8DD1E1', // TodayCases
+                    'deaths': '#b33434', // Deaths
+                    'todayDeaths': '#e35146', // TodayDeaths
+                    'recovered': '#8884D8', // Recovered
+                    'active': '#A4DE6C', // Active
+                    'critical': '#d97b34', // Critical
+                    'todayRecovered': '#fca503'
                 };
 
-                delete data.updated;
-                delete data.casesPerOneMillion
-                delete data.deathsPerOneMillion
                 setAffectedCountries(data.affectedCountries)
-                delete data.affectedCountries
-                delete data.casesPerOneMillion
-                delete data.testsPerOneMillion
-                delete data.tests;
-                delete data.continent;
-                delete data.population
-                delete data.undefined;
-                delete data.recoveredPerOneMillion;
-                delete data.activePerOneMillion;
-                delete data.criticalPerOneMillion;
-
                 let totalCases = data.cases
-                delete data.cases;
+
+                for (let i in data) {
+                    if (Object.keys(colors).indexOf(i) === -1) {
+                        delete data[i]
+                    }
+                }
                 
                 _.forEach(data, function (data, name) {
                     radialData.push({
@@ -60,15 +55,20 @@ export default function Header ()
         }, 5000)
     }, [])
 
+
+    const H2 = styled.h2`
+        color: ${props => props.theme == 'dark' ? '#fff' : '#333'} !important;
+    `
+
     const formatNumber = (value) =>  Number((value).toFixed(1)).toLocaleString();
     return (
         <div className="headerContainer">
-            <h2>AFFECTED COUNTRIES: 
+            <H2 theme={theme}>AFFECTED COUNTRIES: 
                 <i style={{
                     color: 'red'
                 }}>{affectedCountries}</i>
-            </h2>
-            {!loading ? <PieComponent country="global" data={stats} activeIdx={4}/> : <Loader/>}
+            </H2>
+            {!loading ? <PieComponent country="global" theme={theme} data={stats} activeIdx={5}/> : <Loader theme={theme}/>}
         </div>
     )
 }

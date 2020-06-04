@@ -17,9 +17,7 @@
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    border: 1px solid #333;
     padding-bottom: 12px;
-    background-color: #333;
 }
   
 .chartTitle {
