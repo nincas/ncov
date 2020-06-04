@@ -110,9 +110,8 @@ function Index () {
             {lazyLoader(Header, 'header', {theme})}
             {
                 countries.map((country, idx) => {
-
                     return <ItemContainer key={idx}>
-                            <ResponsiveContainer>
+                            <ResponsiveContainer debounce={1}>
                             {lazyLoader(PieComponent, country, {country, theme})}
                         </ResponsiveContainer>
                     </ItemContainer>

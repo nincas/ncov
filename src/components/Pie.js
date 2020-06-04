@@ -35,6 +35,8 @@ export default function PieComponent ({country = 'philippines', theme, data = []
     
     const [loading, setLoading] = useState(true);
 
+    const sleep = async (ms) => setTimeout(Promise.resolve(), ms)
+
     // Theme
     const colorTheme = theme == 'dark' ? '#fff' : '#26242E';
 
@@ -56,13 +58,13 @@ export default function PieComponent ({country = 'philippines', theme, data = []
                 setCountryName(data.country)
                 setLatLong(`${data.countryInfo.lat},${data.countryInfo.long}`)
                 setTested(data.tests)
-
+    
                 for (let i in data) {
                     if (Object.keys(colors).indexOf(i) === -1) {
                         delete data[i]
                     }
                 }
-
+    
                 console.log(colors)
                 _.forEach(data, (data, name) => {
                     pieData.push({
@@ -72,12 +74,12 @@ export default function PieComponent ({country = 'philippines', theme, data = []
                         totalCases: cases
                     })
                 });
-
-
+    
+    
                 setData(pieData)
                 setLoading(false)
             })
-        }, 60000)
+        }, 3500);
     }, [arrData])
 
 
