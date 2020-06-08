@@ -14,6 +14,7 @@ import _ from 'lodash'
 import Loader from './Loader'
 import styled from 'styled-components'
 import './Pie.css'
+import CountUp  from 'react-countup';
 
 const ucword = (str) => str.charAt(0).toUpperCase() + str.substr(1, str.length)
 
@@ -209,7 +210,7 @@ export default function PieComponent ({country = 'philippines', theme, data = []
                         fontSize: '12px',
                         textTransform: 'uppercase',
                         color: colorTheme
-                    }}>{value}: <i style={{color: 'red !important'}}>{formatNumber(entry.payload.value)}</i></span>}
+                    }}>{value}: <i style={{color: 'red !important'}}><CountUp end={entry.payload.value} separator="," duration={2.75}/></i></span>}
                 />
                 {!loading ? 
                 <Pie 
