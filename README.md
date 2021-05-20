@@ -1,2 +1,2 @@
-## Sample Website
-[Sample Website](https://nincas.github.io/ncov)
+## Simple Corona Virus Statistics using Open Source API and ReactJS
+[Github Page](https://nincas.github.io/ncov)
